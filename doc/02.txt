@@ -1,0 +1,13 @@
+安装windowbuilder插件即可
+　　首先,需要知道自己的Eclipse是什么版本的.可以到Eclipse的安装目录下用记事本打开.eclipseproduct文件,version后面对应的就是版本号.
+　　打开http://eclipse.org/windowbuilder/download.php,里面有Update Sites,下面有Eclipse Version,Release Version,Integration Version栏目.选择对应版本的link.复制URL地址.
+　　打开Eclipse,选择Help→Install New Software,在work with里面把得到的URL复制进去.勾选所有,点击Next安装就好了.是已经安装过的,所以按钮是灰色的。
+　　然后新建项目,New→Project→WindowBuilder→SWT Designer→SWT/JFace Java Project
+　　然后建立一个包，在建类的时候选择New→Other，选择WindowBuilder→Swing Designer→Application Window.类建好之后点击Design就可以进行可视化编辑了。
+
+
+
+
+
+
+http://www.cnblogs.com/ssh2/p/3463199.html
