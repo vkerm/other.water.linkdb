@@ -5,14 +5,21 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class db {
 	public  String getName() {
 	    Connection conn = getConn();
-	    String sql = "select name from persons";
 	    PreparedStatement pstmt;
 	    String name="";
 	    try {
+	    	List<String> ips = iputils.getIp();
+	    	String where =" '+1+',";
+	    	for(String str:ips) {
+	    		where = where+str+",";
+	    	};
+	    	where =where+ "'+2+'";
+	 	    String sql = "select name from ipmessage where ip in ("+where+")";
 	        pstmt = (PreparedStatement)conn.prepareStatement(sql);
 	        ResultSet rs = pstmt.executeQuery();
 	        int col = rs.getMetaData().getColumnCount();
@@ -22,14 +29,14 @@ public class db {
 	            	name = rs.getString(i);
 	             }
 	        }
-	    } catch (SQLException e) {
+	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
 	    return name;
 	}
 	private  Connection getConn() {
-	    String driver = "org.mariadb.jdbc.Driver";
-	    String url = "jdbc:mariadb://localhost:3306/test";
+	    String driver = "com.mysql.jdbc.Driver";
+	    String url = "jdbc:mysql://localhost:3306/waterlocation?useUnicode=true&amp;characterEncoding=utf8";
 	    String username = "root";
 	    String password = "root";
 	    Connection conn = null;
